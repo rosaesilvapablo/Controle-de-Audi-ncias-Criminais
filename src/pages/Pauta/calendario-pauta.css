@@ -1,0 +1,480 @@
+.scac-calendar-shell {
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.08), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.scac-calendar.rbc-calendar {
+  color: var(--aurora-text-primary);
+}
+
+.scac-calendar .rbc-month-view,
+.scac-calendar .rbc-time-view,
+.scac-calendar .rbc-agenda-view {
+  border: 1px solid var(--aurora-border);
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 18px 44px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.scac-calendar .rbc-month-view {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+}
+
+.scac-calendar .rbc-time-header,
+.scac-calendar .rbc-month-header {
+  background: linear-gradient(180deg, #fbfcff 0%, #f3f6fb 100%);
+}
+
+.scac-calendar .rbc-time-header-content,
+.scac-calendar .rbc-header + .rbc-header,
+.scac-calendar .rbc-day-bg + .rbc-day-bg,
+.scac-calendar .rbc-time-content > * + * > *,
+.scac-calendar .rbc-time-view .rbc-allday-cell + .rbc-allday-cell {
+  border-left: 1px solid rgba(215, 222, 234, 0.92);
+}
+
+.scac-calendar .rbc-header {
+  min-height: 88px;
+  padding: 12px 8px 14px;
+  border-bottom: 1px solid rgba(215, 222, 234, 0.92);
+  background: transparent;
+}
+
+.scac-calendar__header-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.scac-calendar__header-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aurora-text-muted);
+}
+
+.scac-calendar__header-date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--aurora-text-primary);
+}
+
+.scac-calendar__header-date.is-today {
+  background: linear-gradient(135deg, var(--aurora-primary) 0%, var(--aurora-primary-light) 100%);
+  color: white;
+  box-shadow: 0 10px 20px rgba(55, 48, 163, 0.24);
+}
+
+.scac-calendar__month-date {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scac-calendar__month-date-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--aurora-text-secondary);
+}
+
+.scac-calendar__month-date-number.is-today {
+  background: linear-gradient(135deg, var(--aurora-primary) 0%, var(--aurora-primary-light) 100%);
+  color: white;
+}
+
+.scac-calendar .rbc-time-gutter,
+.scac-calendar .rbc-time-header-gutter {
+  background: linear-gradient(180deg, #fafcff 0%, #f3f6fb 100%);
+}
+
+.scac-calendar .rbc-label {
+  padding: 0 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--aurora-text-muted);
+}
+
+.scac-calendar .rbc-time-content {
+  border-top: 1px solid rgba(215, 222, 234, 0.92);
+}
+
+.scac-calendar .rbc-timeslot-group {
+  min-height: 72px;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.85);
+}
+
+.scac-calendar .rbc-time-view .rbc-event {
+  min-height: 0;
+}
+
+.scac-calendar .scac-slot {
+  transition: background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.scac-calendar .scac-slot.scac-slot--hour {
+  border-top: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.scac-calendar .scac-slot.scac-slot--half {
+  border-top: 1px dashed rgba(196, 207, 223, 0.9);
+}
+
+.scac-calendar .rbc-day-slot .scac-slot:hover,
+.scac-calendar .rbc-day-bg:hover,
+.scac-calendar .rbc-month-row .rbc-day-bg:hover {
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.scac-calendar .scac-day.is-weekend,
+.scac-calendar .rbc-day-bg.rbc-off-range-bg,
+.scac-calendar .rbc-month-view .rbc-day-bg:nth-child(7n),
+.scac-calendar .rbc-month-view .rbc-day-bg:nth-child(7n + 1) {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.scac-calendar .scac-day.is-inactive-day {
+  background:
+    linear-gradient(180deg, rgba(226, 232, 240, 0.45) 0%, rgba(226, 232, 240, 0.28) 100%);
+}
+
+.scac-calendar .scac-day.is-inactive-day:hover,
+.scac-calendar .rbc-day-slot .scac-day.is-inactive-day .scac-slot:hover {
+  background:
+    linear-gradient(180deg, rgba(226, 232, 240, 0.55) 0%, rgba(226, 232, 240, 0.34) 100%);
+}
+
+.scac-calendar .scac-day.is-today,
+.scac-calendar .rbc-today {
+  background: linear-gradient(180deg, rgba(79, 70, 229, 0.08) 0%, rgba(79, 70, 229, 0.03) 100%) !important;
+}
+
+.scac-calendar .rbc-current-time-indicator {
+  background: var(--aurora-red);
+  height: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85);
+}
+
+.scac-calendar .rbc-event,
+.scac-calendar .rbc-day-slot .rbc-event {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible;
+}
+
+.scac-calendar .scac-event {
+  margin: 0 2px;
+}
+
+.scac-calendar .scac-event .rbc-event-content {
+  height: 100%;
+}
+
+.scac-event-card {
+  display: flex;
+  height: 100%;
+  min-height: 56px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 4px solid var(--scac-event-accent, var(--aurora-primary));
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 100%),
+    var(--scac-event-accent, var(--aurora-primary));
+  padding: 8px 10px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+}
+
+.scac-calendar .rbc-time-view .scac-event-card {
+  min-height: 48px;
+  gap: 3px;
+  border-radius: 14px;
+  padding: 7px 9px;
+}
+
+.scac-calendar .rbc-time-view .scac-event-card__title {
+  font-size: 0.78rem;
+}
+
+.scac-calendar .rbc-time-view .scac-event-card__meta {
+  font-size: 0.64rem;
+}
+
+.scac-calendar .rbc-month-row {
+  border-top: 1px solid rgba(215, 222, 234, 0.92);
+}
+
+.scac-calendar .rbc-month-row .rbc-row-bg,
+.scac-calendar .rbc-month-row .rbc-row-content {
+  padding: 2px 2px 4px;
+}
+
+.scac-calendar .rbc-month-view .rbc-date-cell {
+  padding: 8px 10px 4px;
+}
+
+.scac-calendar .rbc-month-view .rbc-row-segment {
+  padding: 0 2px 3px;
+}
+
+.scac-calendar .rbc-month-view .scac-event-card {
+  min-height: 38px;
+  border-radius: 12px;
+  padding: 5px 7px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+.scac-calendar .rbc-month-view .scac-event-card__type {
+  font-size: 0.54rem;
+}
+
+.scac-calendar .rbc-month-view .scac-event-card__title {
+  font-size: 0.72rem;
+}
+
+.scac-calendar .rbc-month-view .scac-event-card__meta {
+  display: none;
+}
+
+.scac-event-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.scac-event-card__type {
+  display: inline-flex;
+  max-width: calc(100% - 24px);
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.scac-event-card__type span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scac-event-card__critical {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.scac-event-card__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: white;
+}
+
+.scac-event-card__meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.scac-event--agendada {
+  --scac-event-accent: #534ab7;
+}
+
+.scac-event--em_andamento {
+  --scac-event-accent: #ef9f27;
+}
+
+.scac-event--realizada {
+  --scac-event-accent: #1d9e75;
+}
+
+.scac-event--cancelada {
+  --scac-event-accent: #e24b4a;
+}
+
+.scac-event--redesignada {
+  --scac-event-accent: #7f77dd;
+}
+
+.scac-event--suspensa {
+  --scac-event-accent: #4a4a7a;
+}
+
+.scac-event.is-near .scac-event-card {
+  animation: pulsar 1.8s ease-in-out infinite;
+}
+
+.scac-event.is-late .scac-event-card {
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.92),
+    0 0 0 4px rgba(226, 75, 74, 0.45),
+    0 12px 28px rgba(15, 23, 42, 0.18);
+}
+
+.scac-event.has-critical .scac-event-card {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 8px,
+      rgba(255, 255, 255, 0.02) 8px,
+      rgba(255, 255, 255, 0.02) 16px
+    ),
+    linear-gradient(135deg, var(--scac-event-accent), var(--scac-event-accent));
+}
+
+.scac-calendar .rbc-show-more {
+  margin-top: 4px;
+  color: var(--aurora-primary);
+  background: rgba(79, 70, 229, 0.08);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.scac-calendar .rbc-overlay {
+  border: 1px solid var(--aurora-border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.16);
+}
+
+.scac-calendar .rbc-overlay-header {
+  margin: -10px -10px 8px;
+  border-bottom: 1px solid var(--aurora-border);
+  background: #f8fafc;
+  padding: 10px 14px;
+  font-weight: 700;
+  color: var(--aurora-text-primary);
+}
+
+@media (max-width: 1023px) {
+  .scac-calendar-shell {
+    padding: 10px;
+  }
+
+  .scac-calendar .rbc-header {
+    min-height: 72px;
+    padding: 10px 4px 12px;
+  }
+
+  .scac-calendar__header-date {
+    width: 34px;
+    height: 34px;
+    font-size: 0.92rem;
+  }
+
+  .scac-calendar__header-label {
+    font-size: 0.62rem;
+  }
+
+  .scac-event-card {
+    padding: 7px 8px;
+  }
+
+  .scac-calendar .rbc-time-view .rbc-time-header-content {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .scac-calendar .rbc-header {
+    min-height: 58px;
+    padding: 8px 2px;
+  }
+
+  .scac-calendar__header-cell {
+    gap: 4px;
+  }
+
+  .scac-calendar__header-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .scac-calendar__header-date {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .scac-calendar .rbc-time-gutter .rbc-label {
+    padding: 0 4px;
+    font-size: 0.62rem;
+  }
+
+  .scac-calendar .rbc-timeslot-group {
+    min-height: 60px;
+  }
+
+  .scac-calendar .rbc-time-view .scac-event-card {
+    min-height: 42px;
+    border-radius: 12px;
+    padding: 6px 7px;
+  }
+
+  .scac-calendar .rbc-time-view .scac-event-card__type {
+    font-size: 0.52rem;
+  }
+
+  .scac-calendar .rbc-time-view .scac-event-card__title {
+    font-size: 0.69rem;
+  }
+
+  .scac-calendar .rbc-time-view .scac-event-card__meta {
+    font-size: 0.58rem;
+  }
+
+  .scac-calendar .rbc-month-view .scac-event-card__type span:last-child {
+    display: none;
+  }
+
+  .scac-calendar .rbc-month-view .scac-event-card {
+    min-height: 34px;
+    padding: 4px 6px;
+  }
+
+  .scac-calendar .rbc-month-view .rbc-show-more {
+    font-size: 0.62rem;
+  }
+}

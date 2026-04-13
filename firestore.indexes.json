@@ -1,0 +1,304 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "magistradoId", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "salaId", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "cargoMagistrado", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "sigiloso", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "cargoMagistrado", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "salaId", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraFim", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "magistradoId", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraFim", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audiencias",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "reuPreso", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataHoraInicio", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "procedimentos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "audienciaId", "order": "ASCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "procedimento_itens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "procedimentoId", "order": "ASCENDING" },
+        { "fieldPath": "fase", "order": "ASCENDING" },
+        { "fieldPath": "ordem", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "procedimento_itens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "procedimentoId", "order": "ASCENDING" },
+        { "fieldPath": "resetarNaRemarcacao", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos_pendentes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "situacao", "order": "ASCENDING" },
+        { "fieldPath": "dataInclusao", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos_pendentes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "situacao", "order": "ASCENDING" },
+        { "fieldPath": "dataInclusao", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos_pendentes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "cargoMagistrado", "order": "ASCENDING" },
+        { "fieldPath": "dataInclusao", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos_pendentes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "situacao", "order": "ASCENDING" },
+        { "fieldPath": "cargoMagistrado", "order": "ASCENDING" },
+        { "fieldPath": "dataInclusao", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos_pendentes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "reagendamento", "order": "ASCENDING" },
+        { "fieldPath": "dataInclusao", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos_pendentes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "audienciaId", "order": "ASCENDING" },
+        { "fieldPath": "situacao", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audit_logs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "colecao", "order": "ASCENDING" },
+        { "fieldPath": "documentoId", "order": "ASCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audit_logs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tipo", "order": "ASCENDING" },
+        { "fieldPath": "timestamp", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audit_logs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "usuarioUid", "order": "ASCENDING" },
+        { "fieldPath": "timestamp", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "audit_logs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tipo", "order": "ASCENDING" },
+        { "fieldPath": "usuarioUid", "order": "ASCENDING" },
+        { "fieldPath": "timestamp", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "checklist_templates",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "ativa", "order": "ASCENDING" },
+        { "fieldPath": "versao", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "disponibilidades",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "usuarioId", "order": "ASCENDING" },
+        { "fieldPath": "diaSemana", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "salas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "ativa", "order": "ASCENDING" },
+        { "fieldPath": "nome", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "usuarios",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "email", "order": "ASCENDING" },
+        { "fieldPath": "primeiroAcesso", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "prioridades", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "etiquetas", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "metaCNJ", "order": "ASCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "fases.fase1", "order": "ASCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "totalIntimacoesPendentes", "order": "DESCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "intimacoes",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "criadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "intimacoes",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "tipo", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "dataRemessa", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "intimacoes",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "dataRemessa", "order": "ASCENDING" },
+        { "fieldPath": "dataDevolvida", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "participantes",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "tipo", "order": "ASCENDING" },
+        { "fieldPath": "ordem", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

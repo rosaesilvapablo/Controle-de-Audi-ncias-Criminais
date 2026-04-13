@@ -1,0 +1,201 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function autenticado() {
+      return request.auth != null;
+    }
+
+    function perfil() {
+      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.perfil;
+    }
+
+    function usuarioAtivo() {
+      return autenticado() &&
+        get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.ativo == true;
+    }
+
+    function isDiretor() {
+      return autenticado() && perfil() == 'diretor';
+    }
+
+    function isSupervisor() {
+      return autenticado() && perfil() == 'supervisor';
+    }
+
+    function isServidor() {
+      return autenticado() && perfil() == 'servidor';
+    }
+
+    function isMagistrado() {
+      return autenticado() && perfil() == 'magistrado';
+    }
+
+    function isEstagiario() {
+      return autenticado() && perfil() == 'estagiario';
+    }
+
+    function isConvidado() {
+      return autenticado() && perfil() == 'convidado';
+    }
+
+    function canViewOnly() {
+      return isEstagiario() || isConvidado();
+    }
+
+    function podeEditar() {
+      return isDiretor() || isSupervisor() || isServidor();
+    }
+
+    function estaAutorizadoSigiloso(uid) {
+      let doc = get(/databases/$(database)/documents/configuracoes/autorizados_sigiloso);
+      return doc != null &&
+        doc.data.uids != null &&
+        doc.data.uids.hasAny([uid]);
+    }
+
+    function podeVerSigiloso() {
+      return isDiretor() || isMagistrado() || estaAutorizadoSigiloso(request.auth.uid);
+    }
+
+    function naoESigiloso(resource) {
+      return !('sigiloso' in resource.data) || resource.data.sigiloso == false;
+    }
+
+    function podeLerDocumento(resource) {
+      return autenticado() && usuarioAtivo() &&
+        (naoESigiloso(resource) || podeVerSigiloso());
+    }
+
+    function sigiloPermitidoNoPayload() {
+      return !('sigiloso' in request.resource.data) ||
+        request.resource.data.sigiloso == false ||
+        isDiretor() ||
+        isMagistrado();
+    }
+
+    function consultaPublicaPrimeiroAcesso() {
+      return resource.data.primeiroAcesso == true
+        && request.query.limit != null
+        && request.query.limit <= 1;
+    }
+
+    match /usuarios/{uid} {
+      allow get: if (autenticado() && usuarioAtivo()) || resource.data.primeiroAcesso == true;
+      allow list: if (autenticado() && usuarioAtivo()) || consultaPublicaPrimeiroAcesso();
+      allow create: if isDiretor();
+      allow update: if isDiretor() || request.auth.uid == uid;
+      allow delete: if isDiretor();
+    }
+
+    match /audiencias/{id} {
+      allow read: if podeLerDocumento(resource);
+      allow create: if podeEditar() && usuarioAtivo() && sigiloPermitidoNoPayload();
+      allow update: if podeEditar() && usuarioAtivo() && sigiloPermitidoNoPayload();
+      allow delete: if isDiretor();
+    }
+
+    match /processos_pendentes/{id} {
+      allow read: if podeLerDocumento(resource);
+      allow create: if podeEditar() && usuarioAtivo() && sigiloPermitidoNoPayload();
+      allow update: if podeEditar() && usuarioAtivo() && sigiloPermitidoNoPayload();
+      allow delete: if podeEditar() && usuarioAtivo();
+    }
+
+    match /procedimentos/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow create: if podeEditar() && usuarioAtivo();
+      allow update: if (podeEditar() && usuarioAtivo()) || (isMagistrado() && usuarioAtivo());
+      allow delete: if isDiretor();
+    }
+
+    match /procedimento_itens/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow create: if podeEditar() && usuarioAtivo();
+      allow update: if (podeEditar() || isMagistrado()) && usuarioAtivo();
+      allow delete: if isDiretor();
+    }
+
+    match /procedimento_participantes/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow write: if podeEditar() && usuarioAtivo();
+    }
+
+    match /procedimento_documentos/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow write: if podeEditar() && usuarioAtivo();
+    }
+
+    match /salas/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow write: if podeEditar() && usuarioAtivo();
+    }
+
+    match /feriados/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow write: if podeEditar() && usuarioAtivo();
+    }
+
+    match /disponibilidades/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow write: if isDiretor() && usuarioAtivo();
+    }
+
+    match /configuracoes/{docId} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow write: if isDiretor();
+    }
+
+    match /checklist_templates/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow create: if isDiretor();
+      allow update: if isDiretor();
+      allow delete: if false;
+    }
+
+    match /audit_logs/{id} {
+      allow read: if autenticado() && usuarioAtivo();
+      allow create: if autenticado() && usuarioAtivo();
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /processos/{processoId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+
+      match /fase1/{docId} {
+        allow read, write: if request.auth != null;
+      }
+      match /fase2/{docId} {
+        allow read, write: if request.auth != null;
+      }
+      match /fase3/{docId} {
+        allow read, write: if request.auth != null;
+      }
+      match /participantes/{participanteId} {
+        allow read, write: if request.auth != null;
+      }
+      match /intimacoes/{intimacaoId} {
+        allow read, write: if request.auth != null;
+      }
+      match /documentos/{documentoId} {
+        allow read, write: if request.auth != null;
+      }
+      match /auditoria/{registroId} {
+        allow read: if request.auth != null;
+        allow write: if request.auth != null;
+      }
+    }
+
+    match /modelos_documentos/{modeloId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    match /{path=**}/intimacoes/{intimacaoId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}

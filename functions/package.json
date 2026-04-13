@@ -1,0 +1,26 @@
+{
+  "name": "scac-functions",
+  "private": true,
+  "main": "lib/functions/src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "deploy": "npm run build && firebase deploy --only functions",
+    "lint": "echo \"No lint configured\""
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "firebase-admin": "^13.7.0",
+    "firebase-functions": "^7.2.5",
+    "nodemailer": "^6.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/nodemailer": "^6.4.17",
+    "typescript": "^5.7.3"
+  }
+}

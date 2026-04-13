@@ -1,0 +1,17 @@
+export const ROTAS = {
+  PAINEL: '/',
+  FILA: '/fila',
+  PROCESSO_HUB: '/processo/:id',
+  PROCESSO_FASE1: '/processo/:id/fase1',
+  PROCESSO_FASE2: '/processo/:id/fase2',
+  PROCESSO_FASE3: '/processo/:id/fase3',
+  INTIMACOES: '/intimacoes',
+  MODELOS: '/modelos',
+  AGENDA: '/agenda',
+  RELATORIOS: '/relatorios',
+  MAGISTRADO: '/magistrado',
+  processo: (id: string) => `/processo/${id}`,
+  processoFase1: (id: string) => `/processo/${id}/fase1`,
+  processoFase2: (id: string) => `/processo/${id}/fase2`,
+  processoFase3: (id: string) => `/processo/${id}/fase3`,
+} as const

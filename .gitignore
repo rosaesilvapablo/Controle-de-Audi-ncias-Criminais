@@ -1,0 +1,36 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+dist-ssr/
+*.local
+
+# Ambiente — NUNCA versionar o .env real
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Ferramentas locais do agente/IDE
+.agents/
+.claude/
+.tmp-auth-export.json
+
+# Cache TypeScript
+*.tsbuildinfo
